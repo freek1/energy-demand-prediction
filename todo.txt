@@ -1,0 +1,19 @@
+inbound_loads
+- remove cancelled (and VOID) rows, useless as doors do not open and cold is not lost
+- Choose interesting columns for regression
+
+outbound_laods
+- remove cancelled and VOID rows, useless as doors do not open and cold is not lost
+- Choose interesting columns for regression
+
+demand_kWtrain_val
+- split data in train and test
+
+weather
+- find out what columns mean
+
+Pallet_history_Gold_Spike
+- find out how we should use this data. Is it useful for regression?
+
+MAIN
+- set all datetime objects to the same form. Now they can share the same axis.
