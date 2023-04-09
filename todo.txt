@@ -11,6 +11,9 @@ demand_kWtrain_val
 
 weather
 - find out what columns mean
+    - datetime_UTC = time at zone +0
+    - datetime = time at local area (America)
+    - hour = hour of time at local area.
 
 Pallet_history_Gold_Spike
 - find out how we should use this data. Is it useful for regression?
