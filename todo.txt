@@ -21,6 +21,10 @@ Pallet_history_Gold_Spike
 MAIN
 - set all datetime objects to the same form. Now they can share the same axis.
 
----------
+--------- 
+09/04/2023
 
-Combine inbound and outbound csv files.
+Maybe add more columns or remove some?
+Find out where NaNs come from when adding weather.csv in the final merge.
+Pick model more intelligently (e.g. other than AdaBoostRegression)
+Maybe more preprocessing? E.g. log of the time numbers
