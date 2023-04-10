@@ -27,4 +27,6 @@ MAIN
 Maybe add more columns or remove some?
 Find out where NaNs come from when adding weather.csv in the final merge.
 Pick model more intelligently (e.g. other than AdaBoostRegression)
-Maybe more preprocessing? E.g. log of the time numbers
+Maybe more preprocessing? E.g. log of the time numbers or removing time 
+Maybe k-fold for hyperparams?
+When content with train MSE, regress on validation set.
