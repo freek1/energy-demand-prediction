@@ -38,3 +38,4 @@ MAIN
 - add format when converting string to datetime object
 
 - maybe PCA
+- check if times are correct
