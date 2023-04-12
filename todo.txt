@@ -36,3 +36,5 @@ MAIN
 - omg, maybe combine inbound and outbound as the same thing: a time when energy is lost. 
   might not work, as inbound trucks have temperature data, outbound does not.
 - add format when converting string to datetime object
+
+- maybe PCA
