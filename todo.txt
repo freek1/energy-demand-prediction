@@ -39,3 +39,5 @@ MAIN
 
 - maybe PCA
 - check if times are correct
+- keep huge values time column, but subtract the first time value from all values. 
+Then they are not as big, but they do keep track of time.
