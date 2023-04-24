@@ -54,3 +54,6 @@ now do this for the test set. Now you have a model that does not need time.
 holdout set 4 splits
 
 Random forest is very good
+
+Time series utilizen
+  - maybe kwartier van tevoren 
