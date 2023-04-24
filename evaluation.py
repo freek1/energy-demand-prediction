@@ -11,8 +11,8 @@ model_predictions = model_predictions_val.drop('demand_kW', axis = 1)
 
 # Evaluation and plotting
 plot_size = len(model_predictions.columns)
-fig1, ax = plt.subplots(1, plot_size, sharey= True)
-fig1.set_figwidth(7*plot_size)
+fig, ax = plt.subplots(1, plot_size, sharey= True)
+fig.set_figwidth(7*plot_size)
 for i, model in enumerate(model_predictions):
     y_pred = model_predictions[model]
     # Compute evaluations
@@ -28,9 +28,10 @@ plt.savefig('img/correlation.png')
 
 # Plotting errors
 plot_size = len(model_predictions.columns)
-fig2, ax = plt.subplots(plot_size, 1)
-fig2.set_figwidth(8)
-values = np.zeros((len(model_predictions.columns), 2))
+fig, ax = plt.subplots(2, 1)
+fig.set_figwidth(8)
+
+values = np.zeros((2, plot_size))
 for i, model in enumerate(model_predictions):
     y_pred = model_predictions[model]
     values[:,i] = [mean_squared_error(y_val, y_pred), mean_absolute_error(y_val, y_pred)]
