@@ -52,3 +52,8 @@ Then they are not as big, but they do keep track of time.
 merge features to train set and remove time after. now you only have non-time features.
 now do this for the test set. Now you have a model that does not need time.
 holdout set 4 splits
+
+Random forest is very good
+
+Time series utilizen
+  - maybe kwartier van tevoren 
