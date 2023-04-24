@@ -29,7 +29,7 @@ plt.savefig('img/correlation.png')
 # Plotting errors
 plot_size = len(model_predictions.columns)
 fig2, ax = plt.subplots(plot_size, 1)
-fig2.set_figwidth(5*plot_size)
+fig2.set_figwidth(8)
 values = np.zeros((len(model_predictions.columns), 2))
 for i, model in enumerate(model_predictions):
     y_pred = model_predictions[model]
