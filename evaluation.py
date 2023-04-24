@@ -11,8 +11,8 @@ model_predictions = model_predictions_val.drop('demand_kW', axis = 1)
 
 # Evaluation and plotting
 plot_size = len(model_predictions.columns)
-fig, ax = plt.subplots(1, plot_size, sharey= True)
-fig.set_figwidth(7*plot_size)
+fig1, ax = plt.subplots(1, plot_size, sharey= True)
+fig1.set_figwidth(7*plot_size)
 for i, model in enumerate(model_predictions):
     y_pred = model_predictions[model]
     # Compute evaluations
@@ -24,12 +24,12 @@ for i, model in enumerate(model_predictions):
     ax[i].set_ylabel('Predicted demand [kW]')
     ax[i].set_title(f'Model predictions of {model}')
     ax[i].legend()
-plt.tight_layout()
-plt.show()
+plt.savefig('img/correlation.png')
 
 # Plotting errors
 plot_size = len(model_predictions.columns)
-fig, ax = plt.subplots(plot_size, 1)
+fig2, ax = plt.subplots(plot_size, 1)
+fig2.set_figwidth(5*plot_size)
 values = np.zeros((len(model_predictions.columns), 2))
 for i, model in enumerate(model_predictions):
     y_pred = model_predictions[model]
@@ -45,4 +45,5 @@ ax[1].barh(model_predictions.columns, values[1,:])
 ax[1].set_ylabel("Regressor")
 ax[1].set_xlabel("y_test - y_pred")
 plt.tight_layout()
+plt.savefig('img/errors.png')
 plt.show()
