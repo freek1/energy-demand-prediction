@@ -48,3 +48,7 @@ Then they are not as big, but they do keep track of time.
 - Think of time in train and val set: seasonality. If train is only winter it is very biased..
 
 - Add crossval!!!! Ties into the thing above
+
+merge features to train set and remove time after. now you only have non-time features.
+now do this for the test set. Now you have a model that does not need time.
+holdout set 4 splits
