@@ -33,7 +33,7 @@ y_pred_train = np.array(list(pipeline.predict(X_train)))
 
 # Add predicted validation values
 model_predictions = pd.read_csv('output/model_predictions_val.csv')
-model_predictions[MODEL_NAME+'_val'] = y_pred_val
+model_predictions[MODEL_NAME] = y_pred_val
 
 # Save data
 model_predictions.to_csv('output/model_predictions_val.csv', index=False)
