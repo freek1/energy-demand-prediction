@@ -19,7 +19,7 @@ for i, model in enumerate(model_predictions):
     correlation = np.corrcoef(y_val, y_pred)[0,1]
     R2 = correlation**2
 
-    ax[i].plot(y_val, y_pred, 'o', label=f'R2 = {R2}')
+    ax[i].plot(y_val, y_pred, 'o', label=f'R2 = {np.round(R2,3)}')
     ax[i].set_xlabel('True demand [kW]')
     ax[i].set_ylabel('Predicted demand [kW]')
     ax[i].set_title(f'Model predictions of {model}')
