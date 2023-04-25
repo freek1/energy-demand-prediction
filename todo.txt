@@ -57,3 +57,5 @@ Random forest is very good
 
 Time series utilizen
   - maybe kwartier van tevoren 
+
+- hist: bootstrap uit?
