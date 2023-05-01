@@ -104,7 +104,7 @@ def split_train_val_test(data, end_known_idx, split=0.7):
     Output:
         (train_set, val_set, test_set) tuple
     '''
-    test_set = data.iloc[end_known_idx:-2]
+    test_set = data.iloc[end_known_idx:]
     # Randomly split train and val out of known with prob. split
     train_idx = random.sample(set(np.arange(end_known_idx)), int(split * end_known_idx))
     train_set = data.iloc[train_idx]
@@ -112,7 +112,7 @@ def split_train_val_test(data, end_known_idx, split=0.7):
     val_set = data.iloc[list(val_idx)]
     return train_set, val_set, test_set
 
-end_known_idx = demand[demand.demand_kW > 1].index[-1]
+end_known_idx = demand[demand.demand_kW > 1].index[-1]+1
 train_val_split = 0.7 # 70% train, 30% val
 # end_train_idx = int((train_val_split) * end_known_idx)
 # demand_train = demand.loc[0:end_train_idx-1]
@@ -195,13 +195,13 @@ demand_inbound_merge_test = pd.merge_asof(demand_weather_test, inbound_post_nan,
 
 # Add only load time and truck time
 demand_inbound_merge_train1 = demand_inbound_merge_train.drop(
-    ['truck_signin_datetime', 'front_temperature', 'middle_temperature', 'back_temperature', 'net_weight', 'case_quantity', 'pallet_count'],
+    ['truck_signin_datetime', 'front_temperature', 'middle_temperature', 'back_temperature', 'case_quantity', 'pallet_count'],
       axis=1)
 demand_inbound_merge_val1 = demand_inbound_merge_val.drop(
-    ['truck_signin_datetime', 'front_temperature', 'middle_temperature', 'back_temperature', 'net_weight', 'case_quantity', 'pallet_count'],
+    ['truck_signin_datetime', 'front_temperature', 'middle_temperature', 'back_temperature', 'case_quantity', 'pallet_count'],
       axis=1)
 demand_inbound_merge_test1 = demand_inbound_merge_test.drop(
-    ['truck_signin_datetime', 'front_temperature', 'middle_temperature', 'back_temperature', 'net_weight', 'case_quantity', 'pallet_count'],
+    ['truck_signin_datetime', 'front_temperature', 'middle_temperature', 'back_temperature', 'case_quantity', 'pallet_count'],
       axis=1)
 # If they are NaN, replace them with 0.0, since 0 seconds has passed.
 demand_inbound_merge_train2 = demand_inbound_merge_train1.fillna(value=0, axis=1)
@@ -244,13 +244,13 @@ demand_inbound_merge_test3 = pd.merge_asof(demand_inbound_merge_test2, outbound_
 
 # Add only load time and truck time
 demand_inbound_merge_train4 = demand_inbound_merge_train3.drop(
-    ['truck_signin_datetime', 'net_weight', 'case_quantity', 'pallet_count'],
+    ['truck_signin_datetime', 'case_quantity', 'pallet_count'],
       axis=1)
 demand_inbound_merge_val4 = demand_inbound_merge_val3.drop(
-    ['truck_signin_datetime', 'net_weight', 'case_quantity', 'pallet_count'],
+    ['truck_signin_datetime', 'case_quantity', 'pallet_count'],
       axis=1)
 demand_inbound_merge_test4 = demand_inbound_merge_test3.drop(
-    ['truck_signin_datetime', 'net_weight', 'case_quantity', 'pallet_count'],
+    ['truck_signin_datetime', 'case_quantity', 'pallet_count'],
       axis=1)
 
 # If they are NaN, replace them with 0.0, since 0 seconds has passed.
@@ -267,14 +267,18 @@ demand_inbound_merge_train5['truck_time'] = demand_inbound_merge_train5['truck_t
 demand_inbound_merge_val5['truck_time'] = demand_inbound_merge_val5['truck_time_in'] + demand_inbound_merge_val5['truck_time_out']
 demand_inbound_merge_test5['truck_time'] = demand_inbound_merge_test5['truck_time_in'] + demand_inbound_merge_test5['truck_time_out']
 
+demand_inbound_merge_train5['net_weight'] = demand_inbound_merge_train5['net_weight_in'] + demand_inbound_merge_train5['net_weight_out']
+demand_inbound_merge_val5['net_weight'] = demand_inbound_merge_val5['net_weight_in'] + demand_inbound_merge_val5['net_weight_out']
+demand_inbound_merge_test5['net_weight'] = demand_inbound_merge_test5['net_weight_in'] + demand_inbound_merge_test5['net_weight_out']
+
 demand_inbound_merge_train6 = demand_inbound_merge_train5.drop(
-    ['load_time_in', 'load_time_out', 'truck_time_in', 'truck_time_out'],
+    ['load_time_in', 'load_time_out', 'truck_time_in', 'truck_time_out', "net_weight_in", "net_weight_out"],
       axis=1)
 demand_inbound_merge_val6 = demand_inbound_merge_val5.drop(
-    ['load_time_in', 'load_time_out', 'truck_time_in', 'truck_time_out'],
+    ['load_time_in', 'load_time_out', 'truck_time_in', 'truck_time_out', "net_weight_in", "net_weight_out"],
       axis=1)
 demand_inbound_merge_test6 = demand_inbound_merge_test5.drop(
-    ['load_time_in', 'load_time_out', 'truck_time_in', 'truck_time_out'],
+    ['load_time_in', 'load_time_out', 'truck_time_in', 'truck_time_out', "net_weight_in", "net_weight_out"],
       axis=1)
 
 
