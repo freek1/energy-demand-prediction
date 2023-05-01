@@ -59,3 +59,8 @@ Time series utilizen
   - maybe kwartier van tevoren 
 
 - hist: bootstrap uit?
+
+
+EXPLORATION:
+inbound vs outbound hist
+demand hist
