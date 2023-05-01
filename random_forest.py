@@ -22,7 +22,7 @@ y_val = np.array(val['demand_kW']).ravel()
 X_test = test.drop('demand_kW', axis=1)
 
 # Decision Tree
-pipeline = RandomForestRegressor(n_estimators=10, random_state=0, bootstrap = True)
+pipeline = RandomForestRegressor(n_estimators=100, random_state=57, bootstrap = True)
 # Fit the pipeline to the training data
 pipeline.fit(X_train, y_train)
 
