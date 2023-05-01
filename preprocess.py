@@ -177,21 +177,22 @@ print("train pre", demand_weather_train.shape)
 print("val pre", demand_weather_val.shape)
 print("test pre", demand_weather_test.shape, '\n')
 
+minutes = 1
 demand_inbound_merge_train = pd.merge_asof(demand_weather_train, inbound_post_nan, 
                                      left_on='datetime_local', 
                                      right_on='truck_signin_datetime', 
                                      direction='nearest', 
-                                     tolerance=datetime.timedelta(minutes = 15))
+                                     tolerance=datetime.timedelta(minutes = minutes))
 demand_inbound_merge_val = pd.merge_asof(demand_weather_val, inbound_post_nan, 
                                      left_on='datetime_local', 
                                      right_on='truck_signin_datetime', 
                                      direction='nearest', 
-                                     tolerance=datetime.timedelta(minutes = 15))
+                                     tolerance=datetime.timedelta(minutes = minutes))
 demand_inbound_merge_test = pd.merge_asof(demand_weather_test, inbound_post_nan, 
                                      left_on='datetime_local', 
                                      right_on='truck_signin_datetime', 
                                      direction='nearest', 
-                                     tolerance=datetime.timedelta(minutes = 15))
+                                     tolerance=datetime.timedelta(minutes = minutes))
 
 # Add only load time and truck time
 demand_inbound_merge_train1 = demand_inbound_merge_train.drop(
@@ -228,19 +229,19 @@ demand_inbound_merge_train3 = pd.merge_asof(demand_inbound_merge_train2, outboun
                                      right_on='truck_signin_datetime', 
                                      direction='nearest', 
                                      suffixes=('_in', '_out'),
-                                     tolerance=datetime.timedelta(minutes = 15))
+                                     tolerance=datetime.timedelta(minutes = minutes))
 demand_inbound_merge_val3 = pd.merge_asof(demand_inbound_merge_val2, outbound_post_nan, 
                                      left_on='datetime_local', 
                                      right_on='truck_signin_datetime', 
                                      direction='nearest', 
                                      suffixes=('_in', '_out'),
-                                     tolerance=datetime.timedelta(minutes = 15))
+                                     tolerance=datetime.timedelta(minutes = minutes))
 demand_inbound_merge_test3 = pd.merge_asof(demand_inbound_merge_test2, outbound_post_nan, 
                                      left_on='datetime_local', 
                                      right_on='truck_signin_datetime', 
                                      direction='nearest', 
                                      suffixes=('_in', '_out'),
-                                     tolerance=datetime.timedelta(minutes = 15))
+                                     tolerance=datetime.timedelta(minutes = minutes))
 
 # Add only load time and truck time
 demand_inbound_merge_train4 = demand_inbound_merge_train3.drop(

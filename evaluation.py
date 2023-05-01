@@ -24,7 +24,7 @@ for i, model in enumerate(model_predictions):
     ax[i].set_ylabel('Predicted demand [kW]')
     ax[i].set_title(f'Model predictions of {model}')
     ax[i].legend()
-plt.savefig('img/correlation.png')
+plt.savefig('img/correlation_1min.png')
 
 # Plotting errors
 plot_size = len(model_predictions.columns)
