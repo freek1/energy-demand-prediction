@@ -5,6 +5,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, median_abso
 
 # Load data
 model_predictions_val = pd.read_csv('output/model_predictions_val.csv')
+val = pd.read_csv('preprocessed_data/val.csv')
 
 y_val = model_predictions_val['demand_kW']
 model_predictions = model_predictions_val.drop('demand_kW', axis = 1)
@@ -24,7 +25,8 @@ for i, model in enumerate(model_predictions):
     ax[i].set_ylabel('Predicted demand [kW]')
     ax[i].set_title(f'Model predictions of {model}')
     ax[i].legend()
-plt.savefig('img/correlation_1min.png')
+
+# plt.savefig('img/correlation_1min.png')
 
 # Plotting errors
 plot_size = len(model_predictions.columns)
@@ -46,5 +48,19 @@ ax[1].barh(model_predictions.columns, values[1,:])
 ax[1].set_ylabel("Regressor")
 ax[1].set_xlabel("y_test - y_pred")
 plt.tight_layout()
-plt.savefig('img/errors.png')
+# plt.savefig('img/errors.png')
+
+# Prediction line
+X_val = val['datetime_local']
+
+for i, model in enumerate(model_predictions):
+    plt.figure()
+    y_pred = model_predictions[model]
+    plt.scatter(X_val, y_val, alpha=0.5, label='Demand')
+    plt.plot(X_val, y_pred, c='k', linewidth=2, label='Model prediction')
+    plt.title(f'{model} prediction', fontsize=15)
+    plt.legend()
+    plt.xlabel('Date time (validation set)')
+    plt.ylabel('Predicted demand [kW]')
+    plt.show()
 plt.close()
