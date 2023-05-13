@@ -2,7 +2,6 @@
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import cross_val_score
 
 # Constants
 MODEL_NAME = 'random_forest'
@@ -27,7 +26,6 @@ pipeline = RandomForestRegressor(n_estimators=10, random_state=0, bootstrap = Tr
 pipeline.fit(X_train.append(X_val), np.append(y_train, y_val))
 
 y_test = np.array(list(pipeline.predict(X_test)))
-
 
 original_demand = pd.read_csv('data/demand_kWtrain_val.csv')
 original_demand = original_demand.iloc[273988:]

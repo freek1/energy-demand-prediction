@@ -56,11 +56,11 @@ X_val = val['datetime_local']
 for i, model in enumerate(model_predictions):
     plt.figure()
     y_pred = model_predictions[model]
-    plt.scatter(X_val, y_val, alpha=0.5, label='Demand')
-    plt.plot(X_val, y_pred, c='k', linewidth=2, label='Model prediction')
+    plt.scatter(np.arange(len(X_val)), y_val, alpha=0.5, label='Demand')
+    plt.plot(np.arange(len(X_val)), y_pred, c='k', linewidth=2, label='Model prediction')
     plt.title(f'{model} prediction', fontsize=15)
     plt.legend()
-    plt.xlabel('Date time (validation set)')
+    plt.xlabel('Date time (validation set) [Datapoint index]')
     plt.ylabel('Predicted demand [kW]')
     plt.show()
 plt.close()
