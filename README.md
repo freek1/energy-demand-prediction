@@ -1,5 +1,6 @@
 # Energy demand prediction
 Energy demand prediction for Lineage Logistics.
+
 ---
 ## Documentation
 Documentation by sphinx-docs is available here: https://freek1.github.io/energy-demand-prediction/index.html
