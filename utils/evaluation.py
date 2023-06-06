@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.metrics import mean_squared_error, mean_absolute_error, median_absolute_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 def evaluate():
     ''' Preforms the evaluation of all generated data in the csv '''

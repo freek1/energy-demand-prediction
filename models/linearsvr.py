@@ -2,9 +2,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.svm import LinearSVR
-from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import cross_val_score
-from sklearn.preprocessing import StandardScaler
 
 def predict():
     ''' Preforms the prediction of linear svr and generates data in the csv '''
